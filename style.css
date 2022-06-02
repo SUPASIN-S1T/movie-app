@@ -1,0 +1,219 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --colorWhite: #fff;
+  --colorGrey: #cccbcb;
+  --colorBlack: #000;
+  --colorOrange: #ff0000;
+  --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --shadow2: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Kanit", sans-serif;
+}
+
+.preloader {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 1;
+  background: var(--colorWhite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader-hidden {
+  display: none;
+}
+
+.dark-mode {
+  background: var(--colorBlack);
+}
+
+.light-mode {
+  background: var(--colorWhite);
+}
+
+.btn-toggle-theme {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  color: var(--colorWhite);
+  background-color: var(--colorOrange);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow2);
+  text-decoration: none;
+}
+
+.input-search-movies {
+  width: 50px;
+  height: 50px;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  background: var(--colorOrange);
+  caret-color: var(--colorOrange);
+  border: none;
+  transition: 0.3s ease all;
+}
+
+.input-search {
+  position: relative;
+}
+
+.btn-search {
+  position: absolute;
+  top: 25%;
+  right: 25%;
+}
+
+.btn-search i.fas {
+  color: var(--colorWhite);
+  font-size: 1.5rem;
+}
+
+.search-active {
+  width: 300px !important;
+  background: var(--colorWhite);
+  border: 1px solid var(--colorGrey);
+}
+
+.search-icon-active {
+  right: 8%;
+}
+
+.icon-active {
+  color: var(--colorOrange) !important;
+}
+
+.header-container {
+  width: 100vw;
+  height: 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: start;
+  align-content: center;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.header-container .header-title h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: var(--colorOrange);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+  user-select: none;
+}
+
+.header-menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+}
+
+.header-menu li {
+  margin-left: 1rem;
+}
+
+.btn-contact-us {
+  all: unset;
+  width: 180px;
+  height: 50px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--colorWhite);
+  background-color: var(--colorOrange);
+  box-shadow: var(--shadow);
+  border-radius: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-movie-container {
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.carousel-group-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-movie-container .carousel-item {
+  width: 250px;
+  max-width: 100%;
+  height: 375px;
+  box-shadow: var(--shadow);
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.carousel-movie-container .carousel-item .carousel-img-responsive {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.3rem;
+}
+
+.btn {
+  all: unset;
+  width: 60px;
+  height: 60px;
+  background: var(--colorWhite);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.5;
+  box-shadow: var(--shadow);
+}
+
+.btn:hover,
+.btn:active {
+  opacity: 1;
+  color: var(--colorWhite);
+  background: var(--colorOrange);
+}
+
+.btn i.fas {
+  font-size: 2.5rem;
+}
+
+.btn-left {
+  position: absolute;
+  left: 0;
+}
+
+.btn-right {
+  position: absolute;
+  right: 0;
+}

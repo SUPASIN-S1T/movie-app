@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WTFLIX</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Fontawesome CDN -->
+    <script src="https://kit.fontawesome.com/f268a8a3f1.js" crossorigin="anonymous"></script>
+  </head>
+  <body class="light-mode">
+    <!-- preloader -->
+    <div class="preloader">
+      <img src="images/preloader.gif" alt="">
+    </div>
+    
+    <!-- header menu -->
+    <header class="header-container">
+      <div class="header-title">
+        <h1>WTFLIX</h1>
+      </div>
+      <ul class="header-menu">
+        <li>
+          <div class="input-search">
+            <input type="text" class="input-search-movies">
+            <a href="#" class="btn-search"><i class="fas fa-search"></i></a>
+          </div>
+        </li>
+        <li>
+          <a href="#" class="btn-toggle-theme"><i class="fas fa-moon"></i></a>
+        </li>
+        <li>
+          <a href="#" class="btn-contact-us">WATCH NOW</a>
+        </li>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main>
+      <div class="carousel-movie-container">
+        <button class="btn btn-left"><i class="fas fa-chevron-left"></i></button>
+        <button class="btn btn-right"><i class="fas fa-chevron-right"></i></button>
+        <div class="carousel-group-item">
+        </div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
