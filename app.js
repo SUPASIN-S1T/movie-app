@@ -4,35 +4,52 @@ const BASE_URL = `https://api.themoviedb.org/3`;
 const API_URL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&${API_KEY}`;
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
+const API_QUERY = `${BASE_URL}/search/movie?${API_KEY}&query=`;
+const gridMovies = document.querySelector(".grid-movie-container");
+
 window.addEventListener("load", () => {
   const preloader = document.querySelector(".preloader");
   preloader.classList.add("preloader-hidden");
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  getMovies();
-  slide();
+  getMovies(API_URL);
 });
 
-async function getMovies() {
+async function getMovies(url) {
   try {
-    const response = await fetch(API_URL);
+    const response = await fetch(url);
     const data = await response.json();
     createMoives(data.results);
+    console.log(url);
   } catch (err) {
     console.error(err);
   }
 }
+
 const createMoives = (movies) => {
-  const carouselGroup = document.querySelector(".carousel-group-item");
-  movies.map((movie) => {
-    const templateDiv = `<div class="carousel-item">
-                    <img src="${
-                      IMG_URL + movie.poster_path
-                    }" class="carousel-img-responsive">
-                     </div>`;
-    carouselGroup.innerHTML += templateDiv;
-  });
+  if (movies.length === 0) {
+    gridMovies.innerHTML = "";
+    gridMovies.classList.add("not-found");
+    gridMovies.innerHTML = `<h1 class="text-not-found">Not Found !!</h1>`;
+  } else {
+    gridMovies.classList.remove("not-found");
+    gridMovies.innerHTML = "";
+
+    movies.map((movie) => {
+      const { poster_path } = movie;
+
+      const div = document.createElement("div");
+      div.classList.add("grid-item");
+
+      const img = document.createElement("img");
+      img.classList.add("grid-img-responsive");
+      img.src = IMG_URL + poster_path;
+
+      div.appendChild(img);
+      gridMovies.appendChild(div);
+    });
+  }
 };
 
 // function : Toggle Theme (dark mode and light mode)
@@ -69,26 +86,20 @@ const searchInput = () => {
     btnSearchIcon.classList.toggle("icon-active");
     inputSearch.focus();
     inputSearch.value = "";
-  } else {
   }
 };
 
 // Event
 btnSearch.addEventListener("click", searchInput);
 
-// function : carousel
+const searchMoives = document.querySelector("#form-search-movies");
 
-const slide = () => {
-  const btnSlide = document.querySelectorAll(".btn");
-  const movieItem = document.querySelectorAll('.carousel-item');
+searchMoives.addEventListener("submit", () => {
+  const searchValue = document.querySelector(".input-search-movies").value;
 
-  btnSlide.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      if (e.currentTarget.classList.contains("btn-left")) {
-        console.log("slide left!");
-      } else if (e.currentTarget.classList.contains("btn-right")) {
-        console.log("slide right!");
-      }
-    });
-  });
-};
+  if (searchValue) {
+    getMovies(API_QUERY + searchValue);
+  } else {
+    getMovies(API_URL);
+  }
+});
